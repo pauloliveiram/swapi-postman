@@ -1,0 +1,704 @@
+{
+	"info": {
+		"_postman_id": "c2b63fd3-8aae-4251-b02a-e845e94cfb05",
+		"name": "STAR WARS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27429245"
+	},
+	"item": [
+		{
+			"name": "Listar filmes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"The response has all expected properties\", () => {",
+							"    const responseJson = pm.response.json();",
+							"",
+							"    pm.expect(responseJson.count).to.be.a('number');",
+							"    pm.expect(responseJson.next).to.be.null;",
+							"    pm.expect(responseJson.previous).to.be.null;",
+							"    pm.expect(responseJson.results).to.be.an('array');",
+							"    pm.expect(responseJson.results[0].title).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].episode_id).to.be.a('number');",
+							"    pm.expect(responseJson.results[0].opening_crawl).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].director).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].producer).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].release_date).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].characters).to.be.an('array');",
+							"    pm.expect(responseJson.results[0].planets).to.be.an('array');",
+							"    pm.expect(responseJson.results[0].starships).to.be.an('array');",
+							"    pm.expect(responseJson.results[0].vehicles).to.be.a('array');",
+							"    pm.expect(responseJson.results[0].species).to.be.a('array');",
+							"    pm.expect(responseJson.results[0].created).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].edited).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].url).to.be.include('https://swapi.dev/api/films/');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://swapi.dev/api/films",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"dev"
+					],
+					"path": [
+						"api",
+						"films"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar filme específico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"The response has all expected properties\", () => {",
+							"    const responseJson = pm.response.json();",
+							"",
+							"    pm.expect(responseJson.title).to.be.a('string');",
+							"    pm.expect(responseJson.episode_id).to.be.a('number');",
+							"    pm.expect(responseJson.opening_crawl).to.be.a('string');",
+							"    pm.expect(responseJson.director).to.be.a('string');",
+							"    pm.expect(responseJson.producer).to.be.a('string');",
+							"    pm.expect(responseJson.release_date).to.be.a('string');",
+							"    pm.expect(responseJson.characters).to.be.an('array');",
+							"    pm.expect(responseJson.planets).to.be.an('array');",
+							"    pm.expect(responseJson.starships).to.be.an('array');",
+							"    pm.expect(responseJson.vehicles).to.be.a('array');",
+							"    pm.expect(responseJson.species).to.be.a('array');",
+							"    pm.expect(responseJson.created).to.be.a('string');",
+							"    pm.expect(responseJson.edited).to.be.a('string');",
+							"    pm.expect(responseJson.url).to.be.include('https://swapi.dev/api/films/');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://swapi.dev/api/films/1/",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"dev"
+					],
+					"path": [
+						"api",
+						"films",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar todos os personagens",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"The response has all expected properties\", () => {",
+							"    const responseJson = pm.response.json();",
+							"",
+							"    pm.expect(responseJson.count).to.be.a('number');",
+							"    pm.expect(responseJson.next).to.include('https://swapi.dev/api/people/?page=');",
+							"    pm.expect(responseJson.previous).to.be.null;",
+							"    pm.expect(responseJson.results).to.be.an('array');",
+							"    pm.expect(responseJson.results[0].name).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].height).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].mass).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].hair_color).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].skin_color).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].eye_color).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].birth_year).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].gender).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].homeworld).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].films).to.be.an('array');",
+							"    pm.expect(responseJson.results[0].starships).to.be.an('array');",
+							"    pm.expect(responseJson.results[0].vehicles).to.be.a('array');",
+							"    pm.expect(responseJson.results[0].species).to.be.a('array');",
+							"    pm.expect(responseJson.results[0].created).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].edited).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].url).to.include('https://swapi.dev/api/people/');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://swapi.dev/api/people/",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"dev"
+					],
+					"path": [
+						"api",
+						"people",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar personagem específico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"The response has all expected properties\", () => {",
+							"    const responseJson = pm.response.json();",
+							"",
+							"    pm.expect(responseJson.name).to.be.a('string');",
+							"    pm.expect(responseJson.height).to.be.a('string');",
+							"    pm.expect(responseJson.mass).to.be.a('string');",
+							"    pm.expect(responseJson.hair_color).to.be.a('string');",
+							"    pm.expect(responseJson.skin_color).to.be.a('string');",
+							"    pm.expect(responseJson.eye_color).to.be.a('string');",
+							"    pm.expect(responseJson.birth_year).to.be.a('string');",
+							"    pm.expect(responseJson.gender).to.be.a('string');",
+							"    pm.expect(responseJson.homeworld).to.be.a('string');",
+							"    pm.expect(responseJson.films).to.be.an('array');",
+							"    pm.expect(responseJson.starships).to.be.an('array');",
+							"    pm.expect(responseJson.vehicles).to.be.a('array');",
+							"    pm.expect(responseJson.species).to.be.a('array');",
+							"    pm.expect(responseJson.created).to.be.a('string');",
+							"    pm.expect(responseJson.edited).to.be.a('string');",
+							"    pm.expect(responseJson.url).to.include('https://swapi.dev/api/people/');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://swapi.dev/api/people/1/",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"dev"
+					],
+					"path": [
+						"api",
+						"people",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar todas as espaçonaves",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"The response has all expected properties\", () => {",
+							"    const responseJson = pm.response.json();",
+							"",
+							"    pm.expect(responseJson.count).to.be.a('number');",
+							"    pm.expect(responseJson.next).to.include('https://swapi.dev/api/starships/?page=');",
+							"    pm.expect(responseJson.previous).to.be.null;",
+							"    pm.expect(responseJson.results).to.be.an('array');",
+							"    pm.expect(responseJson.results[0].name).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].model).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].manufacturer).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].cost_in_credits).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].length).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].max_atmosphering_speed).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].crew).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].passengers).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].cargo_capacity).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].consumables).to.be.an('string');",
+							"    pm.expect(responseJson.results[0].hyperdrive_rating).to.be.an('string');",
+							"    pm.expect(responseJson.results[0].MGLT).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].starship_class).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].pilots).to.be.a('array');",
+							"    pm.expect(responseJson.results[0].films).to.be.a('array');",
+							"    pm.expect(responseJson.results[0].films[0]).to.include('https://swapi.dev/api/films/');",
+							"    pm.expect(responseJson.results[0].created).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].edited).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].url).to.include('https://swapi.dev/api/starships/');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://swapi.dev/api/starships/",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"dev"
+					],
+					"path": [
+						"api",
+						"starships",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar espaçonave específica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"The response has all expected properties\", () => {",
+							"    const responseJson = pm.response.json();",
+							"",
+							"    pm.expect(responseJson.name).to.be.a('string');",
+							"    pm.expect(responseJson.model).to.be.a('string');",
+							"    pm.expect(responseJson.manufacturer).to.be.a('string');",
+							"    pm.expect(responseJson.cost_in_credits).to.be.a('string');",
+							"    pm.expect(responseJson.length).to.be.a('string');",
+							"    pm.expect(responseJson.max_atmosphering_speed).to.be.a('string');",
+							"    pm.expect(responseJson.crew).to.be.a('string');",
+							"    pm.expect(responseJson.passengers).to.be.a('string');",
+							"    pm.expect(responseJson.cargo_capacity).to.be.a('string');",
+							"    pm.expect(responseJson.consumables).to.be.an('string');",
+							"    pm.expect(responseJson.hyperdrive_rating).to.be.an('string');",
+							"    pm.expect(responseJson.MGLT).to.be.a('string');",
+							"    pm.expect(responseJson.starship_class).to.be.a('string');",
+							"    pm.expect(responseJson.pilots).to.be.a('array');",
+							"    pm.expect(responseJson.films).to.be.a('array');",
+							"    pm.expect(responseJson.films[0]).to.include('https://swapi.dev/api/films/');",
+							"    pm.expect(responseJson.created).to.be.a('string');",
+							"    pm.expect(responseJson.edited).to.be.a('string');",
+							"    pm.expect(responseJson.url).to.include('https://swapi.dev/api/starships/');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://swapi.dev/api/starships/2/",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"dev"
+					],
+					"path": [
+						"api",
+						"starships",
+						"2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar todos os veículos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"The response has all expected properties\", () => {",
+							"    const responseJson = pm.response.json();",
+							"",
+							"    pm.expect(responseJson.count).to.be.a('number');",
+							"    pm.expect(responseJson.next).to.include('https://swapi.dev/api/vehicles/?page=');",
+							"    pm.expect(responseJson.previous).to.be.null;",
+							"    pm.expect(responseJson.results).to.be.an('array');",
+							"    pm.expect(responseJson.results[0].name).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].model).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].manufacturer).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].cost_in_credits).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].length).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].max_atmosphering_speed).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].crew).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].passengers).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].cargo_capacity).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].consumables).to.be.an('string');",
+							"    pm.expect(responseJson.results[0].vehicle_class).to.be.an('string');",
+							"    pm.expect(responseJson.results[0].pilots).to.be.a('array');",
+							"    pm.expect(responseJson.results[0].films).to.be.a('array');",
+							"    pm.expect(responseJson.results[0].films[0]).to.include('https://swapi.dev/api/films/');",
+							"    pm.expect(responseJson.results[0].created).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].edited).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].url).to.include('https://swapi.dev/api/vehicles/');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://swapi.dev/api/vehicles/",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"dev"
+					],
+					"path": [
+						"api",
+						"vehicles",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar um veículo específico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"The response has all expected properties\", () => {",
+							"    const responseJson = pm.response.json();",
+							"",
+							"    pm.expect(responseJson.name).to.be.a('string');",
+							"    pm.expect(responseJson.model).to.be.a('string');",
+							"    pm.expect(responseJson.manufacturer).to.be.a('string');",
+							"    pm.expect(responseJson.cost_in_credits).to.be.a('string');",
+							"    pm.expect(responseJson.length).to.be.a('string');",
+							"    pm.expect(responseJson.max_atmosphering_speed).to.be.a('string');",
+							"    pm.expect(responseJson.crew).to.be.a('string');",
+							"    pm.expect(responseJson.passengers).to.be.a('string');",
+							"    pm.expect(responseJson.cargo_capacity).to.be.a('string');",
+							"    pm.expect(responseJson.consumables).to.be.an('string');",
+							"    pm.expect(responseJson.vehicle_class).to.be.a('string');",
+							"    pm.expect(responseJson.pilots).to.be.a('array');",
+							"    pm.expect(responseJson.films).to.be.a('array');",
+							"    pm.expect(responseJson.films[0]).to.include('https://swapi.dev/api/films/');",
+							"    pm.expect(responseJson.created).to.be.a('string');",
+							"    pm.expect(responseJson.edited).to.be.a('string');",
+							"    pm.expect(responseJson.url).to.include('https://swapi.dev/api/vehicles/');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://swapi.dev/api/vehicles/4/",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"dev"
+					],
+					"path": [
+						"api",
+						"vehicles",
+						"4",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar todas as espécies",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"The response has all expected properties\", () => {",
+							"    const responseJson = pm.response.json();",
+							"",
+							"    pm.expect(responseJson.count).to.be.a('number');",
+							"    pm.expect(responseJson.next).to.include('https://swapi.dev/api/species/?page=');",
+							"    pm.expect(responseJson.previous).to.be.null;",
+							"    pm.expect(responseJson.results).to.be.an('array');",
+							"    pm.expect(responseJson.results[0].name).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].classification).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].designation).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].average_height).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].skin_colors).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].hair_colors).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].eye_colors).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].average_lifespan).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].homeworld).to.include('https://swapi.dev/api/planets/');",
+							"    pm.expect(responseJson.results[0].language).to.be.an('string');",
+							"    pm.expect(responseJson.results[0].people).to.be.a('array');",
+							"    pm.expect(responseJson.results[0].people[0]).to.include('https://swapi.dev/api/people/');",
+							"    pm.expect(responseJson.results[0].films).to.be.a('array');",
+							"    pm.expect(responseJson.results[0].films[0]).to.include('https://swapi.dev/api/films/');",
+							"    pm.expect(responseJson.results[0].created).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].edited).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].url).to.include('https://swapi.dev/api/species/');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://swapi.dev/api/species/",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"dev"
+					],
+					"path": [
+						"api",
+						"species",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar uma espécie específica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"The response has all expected properties\", () => {",
+							"    const responseJson = pm.response.json();",
+							"",
+							"    pm.expect(responseJson.name).to.be.a('string');",
+							"    pm.expect(responseJson.classification).to.be.a('string');",
+							"    pm.expect(responseJson.designation).to.be.a('string');",
+							"    pm.expect(responseJson.average_height).to.be.a('string');",
+							"    pm.expect(responseJson.skin_colors).to.be.a('string');",
+							"    pm.expect(responseJson.hair_colors).to.be.a('string');",
+							"    pm.expect(responseJson.eye_colors).to.be.a('string');",
+							"    pm.expect(responseJson.average_lifespan).to.be.a('string');",
+							"    pm.expect(responseJson.homeworld).to.include('https://swapi.dev/api/planets/');",
+							"    pm.expect(responseJson.language).to.be.an('string');",
+							"    pm.expect(responseJson.people).to.be.a('array');",
+							"    pm.expect(responseJson.people[0]).to.include('https://swapi.dev/api/people/');",
+							"    pm.expect(responseJson.films).to.be.a('array');",
+							"    pm.expect(responseJson.films[0]).to.include('https://swapi.dev/api/films/');",
+							"    pm.expect(responseJson.created).to.be.a('string');",
+							"    pm.expect(responseJson.edited).to.be.a('string');",
+							"    pm.expect(responseJson.url).to.include('https://swapi.dev/api/species/');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://swapi.dev/api/species/3/",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"dev"
+					],
+					"path": [
+						"api",
+						"species",
+						"3",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar todos os planetas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"The response has all expected properties\", () => {",
+							"    const responseJson = pm.response.json();",
+							"",
+							"    pm.expect(responseJson.count).to.be.a('number');",
+							"    pm.expect(responseJson.next).to.include('https://swapi.dev/api/planets/?page=');",
+							"    pm.expect(responseJson.previous).to.be.null;",
+							"    pm.expect(responseJson.results).to.be.an('array');",
+							"    pm.expect(responseJson.results[0].name).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].rotation_period).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].orbital_period).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].diameter).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].climate).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].gravity).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].terrain).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].surface_water).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].population).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].residents).to.be.a('array');",
+							"    pm.expect(responseJson.results[0].residents[0]).to.include('https://swapi.dev/api/people/');",
+							"    pm.expect(responseJson.results[0].films).to.be.an('array');",
+							"    pm.expect(responseJson.results[0].films[0]).to.include('https://swapi.dev/api/films/');",
+							"    pm.expect(responseJson.results[0].created).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].edited).to.be.a('string');",
+							"    pm.expect(responseJson.results[0].url).to.include('https://swapi.dev/api/planets/');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://swapi.dev/api/planets/",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"dev"
+					],
+					"path": [
+						"api",
+						"planets",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar um planeta específico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"The response has all expected properties\", () => {",
+							"    const responseJson = pm.response.json();",
+							"",
+							"    pm.expect(responseJson.name).to.be.a('string');",
+							"    pm.expect(responseJson.rotation_period).to.be.a('string');",
+							"    pm.expect(responseJson.orbital_period).to.be.a('string');",
+							"    pm.expect(responseJson.diameter).to.be.a('string');",
+							"    pm.expect(responseJson.climate).to.be.a('string');",
+							"    pm.expect(responseJson.gravity).to.be.a('string');",
+							"    pm.expect(responseJson.terrain).to.be.a('string');",
+							"    pm.expect(responseJson.surface_water).to.be.a('string');",
+							"    pm.expect(responseJson.population).to.be.a('string');",
+							"    pm.expect(responseJson.residents).to.be.a('array');",
+							"    pm.expect(responseJson.residents[0]).to.include('https://swapi.dev/api/people/');",
+							"    pm.expect(responseJson.films).to.be.an('array');",
+							"    pm.expect(responseJson.films[0]).to.include('https://swapi.dev/api/films/');",
+							"    pm.expect(responseJson.created).to.be.a('string');",
+							"    pm.expect(responseJson.edited).to.be.a('string');",
+							"    pm.expect(responseJson.url).to.include('https://swapi.dev/api/planets/');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://swapi.dev/api/planets/1",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"dev"
+					],
+					"path": [
+						"api",
+						"planets",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
