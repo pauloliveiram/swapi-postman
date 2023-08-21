@@ -1,0 +1,22 @@
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("The response has all expected properties", () => {
+    const responseJson = pm.response.json();
+
+    pm.expect(responseJson.title).to.be.a('string');
+    pm.expect(responseJson.episode_id).to.be.a('number');
+    pm.expect(responseJson.opening_crawl).to.be.a('string');
+    pm.expect(responseJson.director).to.be.a('string');
+    pm.expect(responseJson.producer).to.be.a('string');
+    pm.expect(responseJson.release_date).to.be.a('string');
+    pm.expect(responseJson.characters).to.be.an('array');
+    pm.expect(responseJson.planets).to.be.an('array');
+    pm.expect(responseJson.starships).to.be.an('array');
+    pm.expect(responseJson.vehicles).to.be.a('array');
+    pm.expect(responseJson.species).to.be.a('array');
+    pm.expect(responseJson.created).to.be.a('string');
+    pm.expect(responseJson.edited).to.be.a('string');
+    pm.expect(responseJson.url).to.be.include('https://swapi.dev/api/films/');
+})
