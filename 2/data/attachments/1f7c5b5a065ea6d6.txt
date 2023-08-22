@@ -1,0 +1,27 @@
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("The response has all expected properties", () => {
+    const responseJson = pm.response.json();
+
+    pm.expect(responseJson.name).to.be.a('string');
+    pm.expect(responseJson.model).to.be.a('string');
+    pm.expect(responseJson.manufacturer).to.be.a('string');
+    pm.expect(responseJson.cost_in_credits).to.be.a('string');
+    pm.expect(responseJson.length).to.be.a('string');
+    pm.expect(responseJson.max_atmosphering_speed).to.be.a('string');
+    pm.expect(responseJson.crew).to.be.a('string');
+    pm.expect(responseJson.passengers).to.be.a('string');
+    pm.expect(responseJson.cargo_capacity).to.be.a('string');
+    pm.expect(responseJson.consumables).to.be.an('string');
+    pm.expect(responseJson.hyperdrive_rating).to.be.an('string');
+    pm.expect(responseJson.MGLT).to.be.a('string');
+    pm.expect(responseJson.starship_class).to.be.a('string');
+    pm.expect(responseJson.pilots).to.be.a('array');
+    pm.expect(responseJson.films).to.be.a('array');
+    pm.expect(responseJson.films[0]).to.include('https://swapi.dev/api/films/');
+    pm.expect(responseJson.created).to.be.a('string');
+    pm.expect(responseJson.edited).to.be.a('string');
+    pm.expect(responseJson.url).to.include('https://swapi.dev/api/starships/');
+})

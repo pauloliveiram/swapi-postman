@@ -1,0 +1,25 @@
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("The response has all expected properties", () => {
+    const responseJson = pm.response.json();
+
+    pm.expect(responseJson.name).to.be.a('string');
+    pm.expect(responseJson.classification).to.be.a('string');
+    pm.expect(responseJson.designation).to.be.a('string');
+    pm.expect(responseJson.average_height).to.be.a('string');
+    pm.expect(responseJson.skin_colors).to.be.a('string');
+    pm.expect(responseJson.hair_colors).to.be.a('string');
+    pm.expect(responseJson.eye_colors).to.be.a('string');
+    pm.expect(responseJson.average_lifespan).to.be.a('string');
+    pm.expect(responseJson.homeworld).to.include('https://swapi.dev/api/planets/');
+    pm.expect(responseJson.language).to.be.an('string');
+    pm.expect(responseJson.people).to.be.a('array');
+    pm.expect(responseJson.people[0]).to.include('https://swapi.dev/api/people/');
+    pm.expect(responseJson.films).to.be.a('array');
+    pm.expect(responseJson.films[0]).to.include('https://swapi.dev/api/films/');
+    pm.expect(responseJson.created).to.be.a('string');
+    pm.expect(responseJson.edited).to.be.a('string');
+    pm.expect(responseJson.url).to.include('https://swapi.dev/api/species/');
+})

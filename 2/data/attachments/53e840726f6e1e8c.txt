@@ -1,0 +1,24 @@
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("The response has all expected properties", () => {
+    const responseJson = pm.response.json();
+
+    pm.expect(responseJson.name).to.be.a('string');
+    pm.expect(responseJson.rotation_period).to.be.a('string');
+    pm.expect(responseJson.orbital_period).to.be.a('string');
+    pm.expect(responseJson.diameter).to.be.a('string');
+    pm.expect(responseJson.climate).to.be.a('string');
+    pm.expect(responseJson.gravity).to.be.a('string');
+    pm.expect(responseJson.terrain).to.be.a('string');
+    pm.expect(responseJson.surface_water).to.be.a('string');
+    pm.expect(responseJson.population).to.be.a('string');
+    pm.expect(responseJson.residents).to.be.a('array');
+    pm.expect(responseJson.residents[0]).to.include('https://swapi.dev/api/people/');
+    pm.expect(responseJson.films).to.be.an('array');
+    pm.expect(responseJson.films[0]).to.include('https://swapi.dev/api/films/');
+    pm.expect(responseJson.created).to.be.a('string');
+    pm.expect(responseJson.edited).to.be.a('string');
+    pm.expect(responseJson.url).to.include('https://swapi.dev/api/planets/');
+})

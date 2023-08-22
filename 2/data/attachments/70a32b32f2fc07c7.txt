@@ -1,0 +1,26 @@
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("The response has all expected properties", () => {
+    const responseJson = pm.response.json();
+
+    pm.expect(responseJson.count).to.be.a('number');
+    pm.expect(responseJson.next).to.be.null;
+    pm.expect(responseJson.previous).to.be.null;
+    pm.expect(responseJson.results).to.be.an('array');
+    pm.expect(responseJson.results[0].title).to.be.a('string');
+    pm.expect(responseJson.results[0].episode_id).to.be.a('number');
+    pm.expect(responseJson.results[0].opening_crawl).to.be.a('string');
+    pm.expect(responseJson.results[0].director).to.be.a('string');
+    pm.expect(responseJson.results[0].producer).to.be.a('string');
+    pm.expect(responseJson.results[0].release_date).to.be.a('string');
+    pm.expect(responseJson.results[0].characters).to.be.an('array');
+    pm.expect(responseJson.results[0].planets).to.be.an('array');
+    pm.expect(responseJson.results[0].starships).to.be.an('array');
+    pm.expect(responseJson.results[0].vehicles).to.be.a('array');
+    pm.expect(responseJson.results[0].species).to.be.a('array');
+    pm.expect(responseJson.results[0].created).to.be.a('string');
+    pm.expect(responseJson.results[0].edited).to.be.a('string');
+    pm.expect(responseJson.results[0].url).to.be.include('https://swapi.dev/api/films/');
+})
